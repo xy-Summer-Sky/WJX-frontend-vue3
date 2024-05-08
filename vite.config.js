@@ -12,5 +12,26 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    host: 'localhost',
+    port: 8081,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
+   // 添加 configureServer 钩子
+   configureServer(server) {
+    server.listen(8081, () => {
+      console.log('Server is running at http://localhost:8081')
+    })
   }
+  
+  
+
 })
+
