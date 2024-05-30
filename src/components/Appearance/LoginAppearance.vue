@@ -31,7 +31,7 @@
         </div>
         <el-button
           type="primary"
-          @click="ToPersonal()"
+          @click.native="ToPersonal()"
           style="height: 50px; width: 390px; font-size: large"
           >登录</el-button
         >
@@ -80,9 +80,20 @@ export default {
       }
     },
     ToPersonal() {
-      this.show = false;
-
-      this.$router.push("/Personal");
+      this.show=false;
+      console.log('ToPersonal method is called');
+  this.$router.push("/Personal").then(() => {
+    console.log('Navigation to Personal page is successful');
+  }).catch(error => {
+    console.error('There was an error during navigation', error);
+  });
+    // 关闭当前登录页面
+    
+      // this.show = false;
+      //   this.$nextTick(() => {
+      //   this.$router.push("/Personal");
+      //     });
+      // // this.$router.push("/Personal");
     },
   },
 };
