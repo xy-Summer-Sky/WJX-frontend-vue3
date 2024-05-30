@@ -13,6 +13,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+
   server: {
     host: 'localhost',
     port: 8081,
@@ -34,4 +35,5 @@ export default defineConfig({
   
 
 })
+
 
